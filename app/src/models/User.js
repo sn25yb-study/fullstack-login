@@ -1,5 +1,6 @@
 "use strict"
 
+const { response } = require("express");
 const UserStorage = require("./UserStorage");
 
 class User {
@@ -7,9 +8,9 @@ class User {
 		this.body = body;
 	};
 
-	login() {
+	async login() {
 		const body = this.body;
-		const { id, pw } = UserStorage.getUserInfo(body.id);
+		const { id , pw } = await UserStorage.getUserInfo(body.id);
 		// console.log(a);
 		// console.log(id, pw);
 		if (id) {
